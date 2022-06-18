@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+   {% block title %}
+   <title>Main</title>  
+   {% endblock title %}
+
+  </head>
+
+  <body>
+
+      
+      {% block body %}
+      
+      <div class="card text-center">
+          <div class="card-header">
+              <h3 class="my-4">Flask CRUD Web Development Applications</h3>
+              </div>
+            </div>
+            
+            
+            <div class="text-bg-light p-2 text-center">Users Profile Manaement</div>
+            <div class="container my-3">
+              {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul class=flashes>
+                {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <strong>Message:</strong> {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+              
+             
+                    <div class="card">
+                      
+                      <div class="text-left">
+                        <a href="/add">
+                          <button type="button" class="btn btn-primary ">
+                            
+                            <span class=""></span> Add Users
+                          </button>
+                        </a>
+                        
+                      </div>
+                      </div>
+
+
+
+            <table class="table table-dark table-striped">
+                <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+
+
+                {% for row in users %}
+                  
+                <tr>
+                    <th>{{row.id}}</th>
+                    <td>{{row.name}}</td>
+                    <td>{{row.phone}}</td>
+                    <td>{{row.address}}</td>
+                    <td>{{row.email}}</td>
+                    <td>
+                        <a class="btn btn-success mx-md-0" href="/update/{{row.id}}">Edit</a>
+                        <a class="btn btn-danger mx-md-0" onclick="return confirm('Are You Sure To Delete ?')"  href="delete/{{row.id}}">Delete</a>
+                    </td>
+                </tr>
+                
+     
+            {% endfor %}  
+          
+      </table>
+
+
+      {% endblock body %}
+
+    </div>
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+ <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  
+
+</body>
+</html>
