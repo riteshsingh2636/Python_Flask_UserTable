@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container w-50">
+    <form method="POST" action="">
+{{form.hidden_tag()}}
+<fieldset>
+<legend class="border-bottom mb-4">join Today</legend>
+<div class="from-group">
+    {{form.username.label(class="form-control-label")}}
+    {{form.username(class="form-control form-control-lg")}}
+</div>
+<div class="from-group">
+    {{form.email.label(class="form-control-label")}}
+    {{form.email(class="form-control form-control-lg")}}
+</div>
+<div class="from-group">
+    {{form.password.label(class="form-control-label")}}
+    {{form.password(class="form-control form-control-lg")}}
+</div>
+<div class="from-group">
+    {{form.confirm_password.label(class="form-control-label")}}
+    {{form.confirm_password(class="form-control form-control-lg")}}
+</div>
+</fieldset>
+<div class="from-group">
+    {{form.sumbit(class="btn btn-online-info")}}
+
+    </div>
+
+    </form>
+</div>  
+{% endblock content %}
+
